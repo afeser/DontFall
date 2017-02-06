@@ -25,7 +25,7 @@ public class ParachuteDynamics : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (background.transform.position.y < backgroundOffset) { //Move player
+        if (background.transform.position.y > backgroundOffset) { //Move player
             player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - fallSpeedperFrame, player.transform.position.z); //Move downward
         }else { //Move background
             background.transform.position = new Vector3(background.transform.position.x, background.transform.position.y + fallSpeedperFrame, background.transform.position.z); //Move upward
