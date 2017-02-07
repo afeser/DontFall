@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ParachuteDynamics : MonoBehaviour {
 
+    /*
+     * THIS SCRIPT CONTAINS THE BEHAVIOURS OF THE PARACHUTE AND BACKGROUND
+     */
+
     public GameObject player;
     public GameObject background;
 

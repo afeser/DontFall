@@ -81,7 +81,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Assets\Scripts\FreeFallObjects.cs" />
+    <Compile Include="Assets\Assets\Scripts\ColliderScript.cs" />
+    <Compile Include="Assets\Assets\Scripts\CreateObjects.cs" />
+    <Compile Include="Assets\Assets\Scripts\ObjectGarbageCollector.cs" />
     <Compile Include="Assets\Assets\Scripts\ParachuteDynamics.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
