@@ -13,9 +13,9 @@ public class CreateObjects : MonoBehaviour {
     public GameObject[] gameObjects;
     public int objectSpawnSpeedInMilliseconds = 500; // Time between spawn of objects in milli seconds
     public GameObject background; // Spawn range info
-    public int spawnPosition;
+    public float spawnPosition; // just outside the screen (y value)
     public float maxInitialSpeed,minInitialSpeed; // Max initialize speed
-    public int maxDistractionAngle; // Initial distraction of objects ( 90 means totally horizontal )
+    public float maxDistractionAngle; // Initial distraction of objects ( 90 means totally horizontal )
     public float maxRotationSpeed; // Angular rotation speed
     public float objectSizeMultiplier; // How many times the objects will be bigger-smaller
 
@@ -24,11 +24,19 @@ public class CreateObjects : MonoBehaviour {
 
 	void Start () {
         StartCoroutine(SpawnObjects());
+
+        // - Furkan
+            //initializing variables
+            //or are we going to initialize them inside the unity editor
+            //I get it :)
+        // - Furkan
+        
 	}
 	
 	void Update () {
 		
 	}
+
     
     IEnumerator SpawnObjects() {
         //Instantiating with random orientation and ranged position
@@ -41,7 +49,7 @@ public class CreateObjects : MonoBehaviour {
         
         // Adding linear speed
         myObject.AddComponent<Rigidbody>();
-        float randomAngle = Random.Range(-maxDistractionAngle, maxDistractionAngle);
+        float randomAngle = Random.Range(-maxDistractionAngle,maxDistractionAngle);
         float randomSpeed = Random.Range(minInitialSpeed, maxInitialSpeed);
         myObject.GetComponent<Rigidbody>().velocity = new Vector3(randomSpeed * Mathf.Sin(randomAngle * Mathf.PI / 180), randomSpeed * Mathf.Cos(randomAngle * Mathf.PI / 180), 0);
 
