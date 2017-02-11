@@ -81,10 +81,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Assets\Scripts\ColliderScript.cs" />
-    <Compile Include="Assets\Assets\Scripts\CreateObjects.cs" />
-    <Compile Include="Assets\Assets\Scripts\ObjectGarbageCollector.cs" />
-    <Compile Include="Assets\Assets\Scripts\ParachuteDynamics.cs" />
+    <Compile Include="Assets\Scripts\ColliderScript.cs" />
+    <Compile Include="Assets\Scripts\CreateObjects.cs" />
+    <Compile Include="Assets\Scripts\CreateObjectsFurkan.cs" />
+    <Compile Include="Assets\Scripts\ObjectGarbageCollector.cs" />
+    <Compile Include="Assets\Scripts\ParachuteDynamics.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
