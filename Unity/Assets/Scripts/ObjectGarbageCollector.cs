@@ -10,14 +10,12 @@ public class ObjectGarbageCollector : MonoBehaviour {
      * THIS SCRIPT DESTRYOYS THEM BY TIME
      */
 
-    public float lifeTime=-1;
+    public float lifeTime=20;
 
-    private float defaultLifeTime=10;
+    
 
 	void Start () {
-        if (-1 == lifeTime) lifeTime = defaultLifeTime;
-
-        StartCoroutine(DestroyTimer());
+       StartCoroutine(DestroyTimer());
 	}
 
 	void Update () {

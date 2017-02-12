@@ -7,13 +7,9 @@ public class CreateObjectsFurkan : MonoBehaviour {
 
     // *** instantiate function parameters are going to be revised 
 
-    //GameObject Prefabs
-    public Transform obstacle1;
-    public Transform obstacle2;
-    public Transform obstacleLast;
-    public Transform food1;
-    public Transform food2; //assuming there will be 2 food objects, can always be increased
-    public Transform airObject;
+    public GameObject[] obstacles;
+    public GameObject[] foods;
+    public GameObject airCapsule;
 
 
     private int numberOfVariousObstacles; // baglama, cell phone, elektrik supurgesi, screw, vosvos = 5 , can always be increased
@@ -22,7 +18,7 @@ public class CreateObjectsFurkan : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        InvokeRepeating("ObjectSpawner", .5f, 3.5f);
 	}
 	
 	// Update is called once per frame
@@ -56,18 +52,8 @@ public class CreateObjectsFurkan : MonoBehaviour {
 
     private void SpawnRandomObstacle()
     {
-        int randomObstacle = Random.Range(0, numberOfVariousObstacles);
-        switch (randomObstacle)
-        {
-            case 0:
-                Instantiate(obstacle1);
-                break;
-                    // ...
-                    // ...
-            case 4:                         // numberOfVariousObstacles = 5
-                Instantiate(obstacleLast);
-                break;
-        }
+        int randomObstacle = Random.Range(0, obstacles.Length);
+        Spawn(obstacles[randomObstacle]);
         consequentObstaclesSpawned++;
         consequentFoodsSpawned = 0; consequentAirSpawned = 0;
     }
@@ -104,25 +90,26 @@ public class CreateObjectsFurkan : MonoBehaviour {
     
     void SpawnAirObject()
     {
-        Instantiate(airObject);
+        Spawn(airCapsule);
         consequentAirSpawned++;
         consequentFoodsSpawned = 0;
     }
          
     void SpawnFood()
     {
-        int randomFood = Random.Range(0, 2); //food1 or food2
-        switch (randomFood)
-        {
-            case 0:
-                Instantiate(food1);
-                break;
-            case 1:
-                Instantiate(food2);
-                break;
-        }
+        int randomFood = Random.Range(0, foods.Length); //food1 or food2
+        Spawn(foods[randomFood]);
         consequentFoodsSpawned++;
         consequentAirSpawned = 0;
 	}
+
+    void Spawn(GameObject objectSpawning)
+    {
+        float randomx = Random.Range(-3f, 3f);
+        GameObject myObject = Instantiate(objectSpawning, new Vector3(randomx,-6f,0f), Quaternion.identity );
+        myObject.AddComponent<Rigidbody>();
+        myObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, 5f, 0f);
+        myObject.GetComponent<Rigidbody>().useGravity = false;
+    }
 
     }
